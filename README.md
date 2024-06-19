@@ -23,10 +23,19 @@ Visit our [demo website](https://jik876.github.io/hifi-gan-demo/) for audio samp
 
 
 ## Pre-requisites
-1. Python >= 3.6
+~~1. Python >= 3.6~~
+~~2. Clone this repository.~~
+~~3. Install python requirements. Please refer [requirements.txt](requirements.txt)~~
+1. Python = 3.8
 2. Clone this repository.
-3. Install python requirements. Please refer [requirements.txt](requirements.txt)
-4. Download and extract the [LJ Speech dataset](https://keithito.com/LJ-Speech-Dataset/).
+3. Install python requirements.
+   ```
+   conda create -n torch-1.4.0 python=3.8
+   conda activate torch-1.4.0
+   pip install torch==1.4.0+cpu torchvision==0.5.0+cpu -f https://download.pytorch.org/whl/torch_stable.html
+   pip install scipy librosa matplotlib
+   ```
+5. Download and extract the [LJ Speech dataset](https://keithito.com/LJ-Speech-Dataset/).
 And move all wav files to `LJSpeech-1.1/wavs`
 
 
@@ -82,6 +91,7 @@ Example:
 2. Run the following command.
     ```
     python inference.py --checkpoint_file [generator checkpoint file path]
+    python ./inference.py --input_wavs_dir=./24KHz_original_wav/ --output_dir=./vocoder_output_wav/LJ_FT_T2_V1/ --checkpoint_file=./pretrain_models/LJ_FT_T2_V1/generator_v1
     ```
 Generated wav files are saved in `generated_files` by default.<br>
 You can change the path by adding `--output_dir` option.
